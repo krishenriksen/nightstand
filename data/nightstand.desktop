@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Nightstand
+Comment=Customize how nightstand appear on your screen
+Exec=nightstand
+Icon=nightstand-symbolic
+Terminal=false
+StartupNotify=false
+Type=Application
