@@ -32,6 +32,8 @@ public class NightStandWindow : Window {
     private uint clockTimerID;
     private Gtk.ToolButton app_clock;
 
+    private bool nightmode;
+
     private void on_clicked_notifications (Box cbox) {
 		GLib.List<weak Gtk.Widget> children = cbox.get_children ();
 		foreach (Gtk.Widget element in children) {
@@ -163,8 +165,9 @@ public class NightStandWindow : Window {
 
         clockTimerID = Timeout.add (1, on_timer_create_event);
 
-        app_clock = new Gtk.ToolButton(null, "00:41");
-        app_clock.get_style_context().add_class ("app_clock");
+		var now = new DateTime.now_local ();
+		var app_clock = new Gtk.Label (now.format ("%R"));
+		app_clock.get_style_context().add_class ("app_clock");
 
         lbox.add(app_clock);
 
@@ -172,30 +175,52 @@ public class NightStandWindow : Window {
 
 		var lcbox = new Box (Orientation.HORIZONTAL, 0);
 
-        var icon = new Gtk.Image.from_icon_name("alarm", IconSize.DIALOG);
-		var app_moon = new Gtk.ToolButton(icon, "");
-		app_moon.is_important = true;
+
+
+	    var pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-moon.png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_moon_image = new Gtk.Image();
+		app_moon_image.set_from_pixbuf(pixbuf);
+		var app_moon = new Gtk.Button();
 		app_moon.clicked.connect ( () => {
-			
+			if (this.nightmode) {
+				this.nightmode = false;
+				this.get_style_context().remove_class("nightmode");
+			}
+			else {
+				this.nightmode = true;
+				this.get_style_context().add_class ("nightmode");
+			}
 		});
+		app_moon.add(app_moon_image);
 
 		lcbox.pack_start (app_moon, true, true, 0);
 
-        icon = new Gtk.Image.from_icon_name("alarm", IconSize.DIALOG);
-		var app_alarm = new Gtk.ToolButton(icon, "");
-		app_alarm.is_important = true;
+
+	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-clock.png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_alarm_image = new Gtk.Image();
+		app_alarm_image.set_from_pixbuf(pixbuf);
+		var app_alarm = new Gtk.Button();
 		app_alarm.clicked.connect ( () => {
 			
 		});
+		app_alarm.add(app_alarm_image);
+
 
 		lcbox.pack_start (app_alarm, true, true, 0);
 
-        icon = new Gtk.Image.from_icon_name("exit", IconSize.DIALOG);
-		var app_close = new Gtk.ToolButton(icon, "");
-		app_close.is_important = true;
+
+	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-close.png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_close_image = new Gtk.Image();
+		app_close_image.set_from_pixbuf(pixbuf);
+		var app_close = new Gtk.Button();
 		app_close.clicked.connect ( () => {
 			this.destroy ();
 		});
+		app_close.add(app_close_image);
+
 
 		lcbox.pack_start (app_close, true, true, 0);
 
@@ -310,17 +335,12 @@ public class NightStandWindow : Window {
 
 static int main (string[] args) {
     Gtk.init (ref args);
-    Gtk.Application app = new Gtk.Application ("dk.krishenriksen.nightstand", GLib.ApplicationFlags.FLAGS_NONE);
+    Gtk.Application app = new Gtk.Application ("com.github.krishenriksen.nightstand", GLib.ApplicationFlags.FLAGS_NONE);
 
-    /*
     string css_file = Config.PACKAGE_SHAREDIR +
         "/" + Config.PROJECT_NAME +
         "/" + "nightstand.css";
     var css_provider = new Gtk.CssProvider ();
-    */
-
-    string css_file = "../data/nightstand.css";
-    var css_provider = new Gtk.CssProvider ();    
 
     try {
         css_provider.load_from_path (css_file);

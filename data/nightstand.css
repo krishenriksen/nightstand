@@ -28,18 +28,25 @@
 }
 
 .nightstand .left_box button {
-	padding: 60px;
+	margin: 60px;
+	padding: 20px;
 	background: transparent;
 	font-weight: bold;
+	border-radius: 50%;
 }
 
 .nightstand .right_box {
 	
 }
 
-.nightstand .app_clock * {
-	font-size: 100px;
+.nightstand .app_clock {
+	font-size: 120px;
 	color: #ffffff;
+	font-weight: bold;
+}
+
+.nightstand.nightmode * {
+	color: red;
 }
 
 /* Today Widgets */

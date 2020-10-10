@@ -60,3 +60,21 @@ install_data(
     join_paths('data', 'nightstand.css'),
     install_dir: join_paths(datadir, PROJECT_NAME)
 )
+
+# Install icons
+install_data(
+    join_paths('data', 'Nightstand-moon.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-clock.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-close.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-cloud.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
