@@ -226,9 +226,9 @@ public class NightStandWindow : Window {
 
 		var now = new DateTime.now_local ();
 		var app_clock = new Gtk.Label (now.format ("%R"));
-		app_clock.get_style_context().add_class ("app_clock");
+		this.app_clock.get_style_context().add_class ("app_clock");
 
-        lbox.add(app_clock);
+        lbox.add(this.app_clock);
 
         // ---
 
@@ -326,7 +326,7 @@ public class NightStandWindow : Window {
 
 		var now = new DateTime.now_local ();
 
-		app_clock.label = now.format ("%R");
+		this.app_clock.label = now.format ("%R");
 		return true;
 	}    
 
