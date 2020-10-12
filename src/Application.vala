@@ -30,7 +30,7 @@ public class NightStandWindow : Window {
     private Gtk.ToolButton notifications;
 
     private uint clockTimerID;
-    private Gtk.ToolButton app_clock;
+    private Gtk.Label app_clock;
 
     private bool nightmode;
 
@@ -225,7 +225,7 @@ public class NightStandWindow : Window {
         clockTimerID = Timeout.add (1, on_timer_create_event);
 
 		var now = new DateTime.now_local ();
-		var app_clock = new Gtk.Label (now.format ("%R"));
+		this.app_clock = new Gtk.Label (now.format ("%R"));
 		this.app_clock.get_style_context().add_class ("app_clock");
 
         lbox.add(this.app_clock);
