@@ -35,10 +35,6 @@
 	border-radius: 50%;
 }
 
-.nightstand .right_box {
-	
-}
-
 .nightstand .app_clock {
 	font-size: 120px;
 	color: #ffffff;
@@ -47,6 +43,11 @@
 
 .nightstand.nightmode * {
 	color: red;
+	border-color: red;
+}
+
+.nightstand .right_box {
+	
 }
 
 /* Today Widgets */

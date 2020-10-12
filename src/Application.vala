@@ -139,7 +139,66 @@ public class NightStandWindow : Window {
 
 
 		cbox.show_all();
-    }
+	}
+	
+	private void loadIcons(Box lcbox, Box lbox) {
+		GLib.List<weak Gtk.Widget> children = lcbox.get_children ();
+		foreach (Gtk.Widget element in children) {
+			lcbox.remove(element);
+		}
+
+	    var pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-moon" + (this.nightmode ? "-night" : "") + ".png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_moon_image = new Gtk.Image();
+		app_moon_image.set_from_pixbuf(pixbuf);
+		var app_moon = new Gtk.Button();
+		app_moon.clicked.connect ( () => {
+			if (this.nightmode) {
+				this.nightmode = false;
+				this.get_style_context().remove_class("nightmode");
+			}
+			else {
+				this.nightmode = true;
+				this.get_style_context().add_class ("nightmode");
+			}
+
+			this.loadIcons(lcbox, lbox);
+		});
+		app_moon.add(app_moon_image);
+
+		lcbox.pack_start (app_moon, true, true, 0);
+
+
+	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-clock" + (this.nightmode ? "-night" : "") + ".png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_alarm_image = new Gtk.Image();
+		app_alarm_image.set_from_pixbuf(pixbuf);
+		var app_alarm = new Gtk.Button();
+		app_alarm.clicked.connect ( () => {
+			
+		});
+		app_alarm.add(app_alarm_image);
+
+
+		lcbox.pack_start (app_alarm, true, true, 0);
+
+
+	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-close" + (this.nightmode ? "-night" : "") + ".png");
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
+		var app_close_image = new Gtk.Image();
+		app_close_image.set_from_pixbuf(pixbuf);
+		var app_close = new Gtk.Button();
+		app_close.clicked.connect ( () => {
+			this.destroy ();
+		});
+		app_close.add(app_close_image);
+
+		lcbox.pack_start (app_close, true, true, 0);
+
+		// add to left box
+		lbox.add(lcbox);
+		lbox.show_all();
+	}
 
     public NightStandWindow () {
         this.set_title ("NightStand");
@@ -175,56 +234,7 @@ public class NightStandWindow : Window {
 
 		var lcbox = new Box (Orientation.HORIZONTAL, 0);
 
-
-
-	    var pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-moon.png");
-	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
-		var app_moon_image = new Gtk.Image();
-		app_moon_image.set_from_pixbuf(pixbuf);
-		var app_moon = new Gtk.Button();
-		app_moon.clicked.connect ( () => {
-			if (this.nightmode) {
-				this.nightmode = false;
-				this.get_style_context().remove_class("nightmode");
-			}
-			else {
-				this.nightmode = true;
-				this.get_style_context().add_class ("nightmode");
-			}
-		});
-		app_moon.add(app_moon_image);
-
-		lcbox.pack_start (app_moon, true, true, 0);
-
-
-	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-clock.png");
-	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
-		var app_alarm_image = new Gtk.Image();
-		app_alarm_image.set_from_pixbuf(pixbuf);
-		var app_alarm = new Gtk.Button();
-		app_alarm.clicked.connect ( () => {
-			
-		});
-		app_alarm.add(app_alarm_image);
-
-
-		lcbox.pack_start (app_alarm, true, true, 0);
-
-
-	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-close.png");
-	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
-		var app_close_image = new Gtk.Image();
-		app_close_image.set_from_pixbuf(pixbuf);
-		var app_close = new Gtk.Button();
-		app_close.clicked.connect ( () => {
-			this.destroy ();
-		});
-		app_close.add(app_close_image);
-
-
-		lcbox.pack_start (app_close, true, true, 0);
-
-		lbox.add(lcbox);
+		this.loadIcons(lcbox, lbox);
 
         // right container
         // container for today and notifications

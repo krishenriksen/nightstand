@@ -78,3 +78,20 @@ install_data(
     join_paths('data', 'Nightstand-cloud.png'),
     install_dir: join_paths(datadir, PROJECT_NAME)
 )
+
+install_data(
+    join_paths('data', 'Nightstand-moon-night.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-clock-night.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-close-night.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
+install_data(
+    join_paths('data', 'Nightstand-cloud-night.png'),
+    install_dir: join_paths(datadir, PROJECT_NAME)
+)
