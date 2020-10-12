@@ -175,7 +175,11 @@ public class NightStandWindow : Window {
 		app_alarm_image.set_from_pixbuf(pixbuf);
 		var app_alarm = new Gtk.Button();
 		app_alarm.clicked.connect ( () => {
-			
+			try {
+				GLib.AppInfo.create_from_commandline ("alarm-clock-applet", null, GLib.AppInfoCreateFlags.NONE).launch (null, null);
+			} catch (GLib.Error e) {
+				warning ("Could not load application: %s", e.message);
+			}
 		});
 		app_alarm.add(app_alarm_image);
 
