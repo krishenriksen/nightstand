@@ -28,22 +28,18 @@
 }
 
 .nightstand .left_box button {
-	margin: 60px;
-	padding: 3px;
+	margin: 70px;
+	padding: 5px;
 	background: transparent;
 	font-weight: bold;
 	border-radius: 50%;
+	border-width: 2px;
 }
 
 .nightstand .app_clock {
 	font-size: 175px;
 	color: #e8e8e8;
 	font-weight: bold;
-}
-
-.nightstand.nightmode * {
-	color: red;
-	border-color: red;
 }
 
 .nightstand .right_box {
@@ -96,15 +92,17 @@
 	background: rgba(40, 40, 40, 1);
 }
 
+.nightstand.nightmode .calendar label {
+	color: red;
+}
+
 .nightstand .nowplaying label {
 	color: rgba(151, 151, 151, 1);
 	background: rgba(40, 40, 40, 1);
 }
 
-/* clock */
-.nightstand .clock .today_box_body_clock_widget {
-	margin-left: 15px;
-	background: none;
+.nightstand.nightmode .nowplaying label {
+	color: red;
 }
 
 /* Notifications */
@@ -198,4 +196,9 @@
 
 .nightstand .bottombar .settings_button button {
 	background: none;
+}
+
+.nightstand.nightmode * {
+	color: red;
+	border-color: red;
 }
