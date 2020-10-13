@@ -28,11 +28,11 @@
 }
 
 .nightstand .left_box button {
-	margin: 70px;
+	margin: 50px 50px 0 50px;
 	padding: 5px;
 	background: transparent;
 	font-weight: bold;
-	border: 0;
+	border: 0px;
 }
 
 .nightstand .app_clock {
@@ -205,5 +205,5 @@
 
 .nightstand.nightmode * {
 	color: red;
-	border-color: red;
+	border: 0px;
 }
