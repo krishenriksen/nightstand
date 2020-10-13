@@ -29,15 +29,15 @@
 
 .nightstand .left_box button {
 	margin: 60px;
-	padding: 20px;
+	padding: 3px;
 	background: transparent;
 	font-weight: bold;
 	border-radius: 50%;
 }
 
 .nightstand .app_clock {
-	font-size: 120px;
-	color: #ffffff;
+	font-size: 175px;
+	color: #e8e8e8;
 	font-weight: bold;
 }
 
