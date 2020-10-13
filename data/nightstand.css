@@ -32,14 +32,19 @@
 	padding: 5px;
 	background: transparent;
 	font-weight: bold;
-	border-radius: 50%;
-	border-width: 2px;
+	border: 0;
 }
 
 .nightstand .app_clock {
-	font-size: 175px;
+	font-size: 160px;
 	color: #e8e8e8;
 	font-weight: bold;
+	background: transparent;
+	border: 0;
+}
+
+.nightstand.nightmode .app_clock {
+	color: red;
 }
 
 .nightstand .right_box {

@@ -148,7 +148,7 @@ public class NightStandWindow : Window {
 		}
 
 	    var pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-moon" + (this.nightmode ? "-night" : "") + ".png");
-	    pixbuf = pixbuf.scale_simple(60, 60, Gdk.InterpType.BILINEAR);
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
 		var app_moon_image = new Gtk.Image();
 		app_moon_image.set_from_pixbuf(pixbuf);
 		var app_moon = new Gtk.Button();
@@ -170,7 +170,7 @@ public class NightStandWindow : Window {
 
 
 	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-clock" + (this.nightmode ? "-night" : "") + ".png");
-	    pixbuf = pixbuf.scale_simple(60, 60, Gdk.InterpType.BILINEAR);
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
 		var app_alarm_image = new Gtk.Image();
 		app_alarm_image.set_from_pixbuf(pixbuf);
 		var app_alarm = new Gtk.Button();
@@ -188,7 +188,7 @@ public class NightStandWindow : Window {
 
 
 	    pixbuf = new Gdk.Pixbuf.from_file("/usr/local/share/nightstand/Nightstand-close" + (this.nightmode ? "-night" : "") + ".png");
-	    pixbuf = pixbuf.scale_simple(60, 60, Gdk.InterpType.BILINEAR);
+	    pixbuf = pixbuf.scale_simple(100, 100, Gdk.InterpType.BILINEAR);
 		var app_close_image = new Gtk.Image();
 		app_close_image.set_from_pixbuf(pixbuf);
 		var app_close = new Gtk.Button();
@@ -229,7 +229,7 @@ public class NightStandWindow : Window {
         clockTimerID = Timeout.add (1, on_timer_create_event);
 
 		var now = new DateTime.now_local ();
-		this.app_clock = new Gtk.Label (now.format ("%R"));
+		this.app_clock = new Gtk.Label (now.format ("%l:%M"));
 		this.app_clock.get_style_context().add_class ("app_clock");
 
         lbox.add(this.app_clock);
@@ -330,7 +330,7 @@ public class NightStandWindow : Window {
 
 		var now = new DateTime.now_local ();
 
-		this.app_clock.label = now.format ("%R");
+		this.app_clock.label = now.format ("%l:%M");
 		return true;
 	}    
 
