@@ -32,6 +32,8 @@ public class NightStandWindow : Window {
     private uint clockTimerID;
     private Gtk.Label app_clock;
 
+    private Gtk.Label today_date;
+
     private bool nightmode;
 
     private void on_clicked_notifications (Box cbox) {
@@ -124,10 +126,10 @@ public class NightStandWindow : Window {
 
 		/* Show Today date */
 		var now = new DateTime.now_local ();
-		var today_date = new Gtk.Label (now.format ("%A, %d %B"));
-		today_date.get_style_context().add_class ("today_date");
+		this.today_date = new Gtk.Label (now.format ("%A, %d %B"));
+		this.today_date.get_style_context().add_class ("today_date");
 
-		cbox.add(today_date);
+		cbox.add(this.today_date);
 
 		/* NowPlaying */
 		var nowplaying = new NightStand.NowPlayingWidget();
@@ -327,10 +329,11 @@ public class NightStandWindow : Window {
     }
 
 	private bool on_timer_create_event () {
-
 		var now = new DateTime.now_local ();
 
 		this.app_clock.label = now.format ("%l:%M");
+		this.today_date.label =now.format ("%A, %d %B");
+
 		return true;
 	}    
 
