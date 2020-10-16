@@ -14,7 +14,7 @@ Run `meson build` to configure the build environment:
 This command creates a `build` directory. For all following commands, change to
 the build directory before running them.
 
-To build notificationcenter, use `ninja`:
+To build nightstand, use `ninja`:
 
     ninja
 
